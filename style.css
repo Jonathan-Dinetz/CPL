@@ -32,8 +32,7 @@
     .video-big {
         border:none;
         overflow:hidden;
-        width:300vw; 
-       
+        width:300vw;    
         position: fixed; 
         top: 10%;
         left: -100vw;
