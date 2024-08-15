@@ -1,40 +1,22 @@
-._1c_u_j_t_302m{
-    display: none;
-}
-
-.test-header {
-    position: fixed;
-    top: 10;
-    color: white;
-}
-
-.blocker {
-    position: fixed;
-    background-color: transparent;
-    top: -.5vh;
-    left: -.5%;
-    z-index: 100;
-    height: 120vh;
-    width: 120vw;
-}
 
 .video-big {
     border:none;
     overflow:hidden;
-    width:101vw; 
-    height:101vh; 
-    position: fixed; 
-    top: -5%;
-    left: -.5%;
+    width:130%; 
+    height:110vh; 
+    padding: 0;
+    margin:0;
+    position: fixed;
+    top: -5vh;
+    left: -10vw;
+    scroll-behavior: none;
 }
 
-@media (max-width: 1200px) {
-    .video-big {
-        border:none;
-        overflow:hidden;
-        width:300vw;    
-        position: fixed; 
-        top: 10%;
-        left: -100vw;
-    }
+.blocker {
+    width: 110vw;
+    height: 110vh;
+    position: fixed;
+    top: -5vh;
+    left: -5vw;
+    z-index: 100;
 }
