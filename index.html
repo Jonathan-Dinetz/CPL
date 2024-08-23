@@ -12,15 +12,15 @@
         }
         .ball {
             position: absolute;
-            width: 400px;
-            height: 200px;
+            width: 200px;
+            height: 125px;
             background-color: transparent;
          
             
         }
         img {
-            height: 200px;
-            width: 400px;
+            height: 125px;
+            width: 200px;
             background-color: transparent;
         }
 
@@ -57,9 +57,9 @@ font-size: 2vh;
         const ball = document.querySelector('.ball');
         let posX = 100;
         let posY = 100;
-        let velocityX = 4;
-        let velocityY = 4;
-        const ballSize = 400;
+        let velocityX = 3;
+        let velocityY = 3;
+        const ballSize = 200;
      
 
         function moveBall() {
@@ -71,7 +71,7 @@ font-size: 2vh;
             if (posX + ballSize > window.innerWidth || posX < 0) {
                 velocityX = -velocityX;
             }
-            if (posY + ballSize - 200 > window.innerHeight || posY < 0) {
+            if (posY + ballSize - 75 > window.innerHeight || posY < 0) {
                 velocityY = -velocityY;
             }
 
