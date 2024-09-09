@@ -171,34 +171,40 @@ font-family: Arial, Helvetica, sans-serif;
     padding-bottom: 20px;
 }
 
-.arrows {
-    padding-top: 20vh;
-    padding-bottom:;
+.arrows {    
+    position: relative;
+    display: flex; 
+    justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */
+    flex-direction: column;
     height: 100vh;
-    position: relative;; 
-    font-size: 300px; 
+    width: 100vw;
     background: none; 
 }
 
+.arrows-image {
+    width: 35vw; height: auto; position: relative;
+
+}
 
 @media screen and (max-width: 600px) {
 
 .coordinates {
-        font-size: 22px;
+    font-size: 18px;
         }
 
 #clock {
-        font-size: 22px;
+    font-size: 18px;
         }
 
 .info{
-        font-size: 22px;
+    font-size: 18px;
         width: 50%;}
 
 img {
 z-index: -100;
-width: 300px;
-height: 300px;
+width: 250px;
+height: 250px;
 }
 
 .blocker2 {
@@ -210,8 +216,8 @@ z-index: 200;
 }
 
 .draggable {
-width: 290px;
-height: 165px;
+width: 240px;
+height: 145px;
 }
 
 .product-image {
@@ -219,7 +225,7 @@ height: 165px;
 }
 
 .contact{
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .product-container{
@@ -230,21 +236,33 @@ height: 165px;
     justify-content: center; /* Horizontally center */
     align-items: center;     /* Vertically center */
     flex-direction: column;
-    height: 700px;
+    height: auto;
     width: calc(100%-20px);
     left: 10px;
+    font-size: 18px;
 }
 
 .arrows {
-    padding-top: 36vh;
+    position: relative; 
+    display: flex; 
+    justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */
+    flex-direction: column;
     height: 100vh;
-    position:absolute; 
-    font-size: 200px; 
-    background: none; 
+    width: 100vw;
+}
+
+.arrows-image {
+    width: 80vw;
+    height: auto;
 }
 
 .contact-info {
     padding-left: 10px;
     top:25vh;
     font-size: 50px;
+}
+
+.item-info {
+    font-size: 18px;
 }
