@@ -10,6 +10,7 @@ background-color:white;
 a {
     text-decoration: none;
     text-emphasis-style: none;
+    color:white;
 }
 
 .draggable {
