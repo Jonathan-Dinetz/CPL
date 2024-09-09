@@ -1,7 +1,7 @@
 
 function updateClock() {
     const now = new Date();
-    const estOffset = -5 * 60; // EST offset in minutes (-5 hours from UTC)
+    const estOffset = -4 * 60; // EST offset in minutes (-5 hours from UTC)
     const estTime = new Date(now.getTime() + (now.getTimezoneOffset() + estOffset) * 60000);
     
     const hours = String(estTime.getHours()).padStart(2, '0');
@@ -102,3 +102,14 @@ document.addEventListener('touchend', stopDragging);
 
 // Start the bouncing animation
 moveDraggable();
+
+const toggleButton = document.getElementById('toggleButton');
+const toggleDiv = document.getElementById('toggleDiv');
+
+toggleButton.addEventListener('click', () => {
+    if (toggleDiv.style.display === 'none' || toggleDiv.style.display === '') {
+        toggleDiv.style.display = 'block';
+    } else {
+        toggleDiv.style.display = 'none';
+    }
+});
