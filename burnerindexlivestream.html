@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPL</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: auto; /* or overflow: scroll; */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+
+        }
+        #object {
+            width: 550px;
+            height: 350px;
+            z-index: 100;
+            background-color: transparent;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: grab;
+            
+        }
+        #coordinates {
+            position: absolute;
+            top: 230px;
+            left: 10px;
+            font-family: sans-serif;
+            font-size: 18px;
+            color: white;
+           background-color: black;
+           
+        }
+
+        .info{
+            position: absolute;
+            top: 130px;
+            left: 10px;
+            font-family: sans-serif;
+            font-size: 18px;
+            color: black;
+            border-radius: 5px;
+        }
+
+        img {
+            width: 0px;
+            height: 0px;
+        }
+
+        a {
+        text-decoration: none;
+        color: black;
+        }
+
+        .video-container {
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            height: 500px;
+            width: 700px;
+            background-color: red;
+        }
+
+        iframe {
+            position: absolute;
+            left: -50px;
+            bottom: -50px;
+            height: 810px;
+            width: 1410px;
+            border: none;
+            background-color: white;
+        }
+
+        .blocker {
+            position: fixed;
+            left: -60px;
+            bottom: -60px;
+            height: 700px;
+            width: 1340px;
+            border: solid ;
+            border-width: 70px;
+            border-color: white;
+            background-color: transparent;
+            z-index: 100;
+        }
+
+        .logo-left {
+            position: fixed;
+            top: -30px;
+            left: 10px;
+            height: 200px;
+            width: 200px;
+        }
+
+        @media (max-width: 750px) {
+            #object {
+            z-index: 100;
+            width: 250px;
+            height: 150px;
+            background-color: transparent;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: grab;
+        }
+        #coordinates {
+            font-size: 14px;
+        }
+
+        .info {
+            font-size: 14px;
+        }
+        img {
+            width: 250px;
+            height: 150px;
+        }
+          .video-container {
+            position: fixed;
+            top: 0vw;
+            left: 0vw;
+            height: 100vh;
+            width: 100vw;
+            background-color: white;
+        }
+        iframe {
+            position: fixed;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: white;
+        }
+
+    
+
+}
+    </style>
+</head>
+<body>
+    <img class="logo-left" src="images/CPL_logo_white.svg"></img>
+    <div class="container">
+        <div id="coordinates" class="coordinates">X: 0, Y: 0</div>
+    </div>
+    <div id="object"><img src="images/CPL_logo_white.svg"></div>
+
+    <div class="video-container">
+      
+        <div class="blocker"></div>
+
+        <iframe autoplay muted controls
+            src="https://www.youtube.com/embed/6LP5dsUaG8M?si=DQzWn2ikxiEUFMEE&amp;autoplay=1&mute=1"
+            allow="autoplay; encrypted-media"
+        ></iframe>
+    </div>
+
+    <div class="info">
+        <br>
+        Cranston Propulsion Laboratories
+        <br> 
+        Hathaway Center, Suite 99, Cranston RI 02907
+        <br>
+        Contact Us! —> +1(510)-384-6516<br>
+    </div>
+    <script>
+
+        // Select the coordinates display element
+const coordinatesDisplay = document.getElementById('coordinates');
+
+// Function to update cursor coordinates
+function updateCoordinates(event) {
+    const x = event.clientX; // Get X coordinate
+    const y = event.clientY; // Get Y coordinate
+    coordinatesDisplay.textContent = `X: ${x}, Y: ${y}`; // Update the display
+}
+
+// Add event listener to track mouse movement
+document.addEventListener('mousemove', updateCoordinates);
+
+
+    </script>
+</body>
+</html>

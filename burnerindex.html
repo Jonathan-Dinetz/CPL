@@ -1,58 +1,113 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing Object</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color:white;
-        }
-        .ball {
-            position: absolute;
-            width: 200px;
-            height: 125px;
-            background-color: transparent;
-         
-            
-        }
-        img {
-            height: 125px;
-            width: 200px;
-            background-color: transparent;
-        }
-
-        .info {
-        padding: 2%;
-width: 90vw;
-height: 98vh;
-display:inline-flex;
-align-items: flex-end;
-text-align: left;
-font-style: bold;
-font-family: Helvetica, sans-serif;
-color: black;
-font-size: 2vh;
-
-        }
-
-    </style>
+    <title>Bouncing Draggable Object</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+    background-color: #f0f0f0;
+}
+
+.draggable {
+    width: 100px;
+    height: 100px;
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    position: absolute;
+    cursor: grab; /* Cursor indicates that the element can be dragged */
+}
+
+.coordinates {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 18px;
+    color: #333;
+}</style>
 <body>
 
-    <div id="ball"><img src="images/CPL_logo_white.svg"></div>
+   
+        <div id="draggable" class="draggable">Drag me!</div>
+        <div id="coordinates" class="coordinates">X: 0, Y: 0</div>
+   
 
-    <div class="info">
-        <br>
-        Cranston Propulsion Labratories
-        <br> 
-        Hathaway Center, Suite 99, Cranston RI 02907
-        <br>
-        Contact Us! @ +1(510)-384-6516 <br>
-    </div>
-    
-    <script src="script.js"></script>
+    <script>const draggable = document.getElementById('draggable');
+const coordinatesDisplay = document.getElementById('coordinates');
+
+let isDragging = false;
+let offsetX, offsetY;
+let velocityX = 2, velocityY = 2; // Initial velocity for bouncing
+const dragThreshold = 10; // Minimum distance to consider dragging
+
+function updateCoordinates(x, y) {
+    coordinatesDisplay.textContent = `X: ${Math.round(x)}, Y: ${Math.round(y)}`;
+}
+
+function moveDraggable(e) {
+    if (isDragging) {
+        draggable.style.left = `${e.clientX - offsetX}px`;
+        draggable.style.top = `${e.clientY - offsetY}px`;
+        updateCoordinates(e.clientX - offsetX, e.clientY - offsetY);
+    } else {
+        const rect = draggable.getBoundingClientRect();
+        let left = rect.left + velocityX;
+        let top = rect.top + velocityY;
+
+        // Bounce off the edges of the window
+        if (left <= 0 || left + rect.width >= window.innerWidth) {
+            velocityX = -velocityX;
+        }
+        if (top <= 0 || top + rect.height >= window.innerHeight) {
+            velocityY = -velocityY;
+        }
+
+        draggable.style.left = `${left}px`;
+        draggable.style.top = `${top}px`;
+        updateCoordinates(left, top);
+    }
+}
+
+function startDragging(e) {
+    if (!isDragging) {
+        offsetX = e.clientX - draggable.getBoundingClientRect().left;
+        offsetY = e.clientY - draggable.getBoundingClientRect().top;
+        isDragging = true;
+        draggable.style.cursor = 'grabbing';
+    } else {
+        isDragging = false;
+        draggable.style.cursor = 'grab';
+    }
+}
+
+function stopDragging() {
+    if (isDragging) {
+        isDragging = false;
+        draggable.style.cursor = 'grab';
+    }
+}
+
+// Event listeners
+draggable.addEventListener('mousedown', startDragging);
+document.addEventListener('mousemove', moveDraggable);
+document.addEventListener('mouseup', stopDragging);
+
+// Bouncing animation
+function bounce() {
+    moveDraggable();
+    requestAnimationFrame(bounce); // Continue the bouncing animation
+}
+
+bounce(); // Start the bouncing animation</script>
 </body>
 </html>
