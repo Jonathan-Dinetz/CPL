@@ -288,6 +288,7 @@ height: 145px;
 }
 
 .product-image {
+    height: auto;
     width: 100%;
 }
 
